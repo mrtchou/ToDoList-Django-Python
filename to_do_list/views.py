@@ -1,17 +1,17 @@
 from django.shortcuts import render
 
+def home(request):
+    return render(request, 'home.html')
+
+def todolist(request):
+    if request.method == 'POST':
+        tache = request.POST.get('tache')
+        if tache:
+            list.append(tache)
+            print("La tache a bien été ajoutée")
+        else:
+            print("Veuillez saisir une tache")
+    return render(request, 'todolist.html', {'list': list})
+
 list = []
 
-def recuperation_saisi(request):
-    tache = input("une tache a saisirr : ")
-    if tache != "" or None or 0:
-        list.append(tache)
-        print("la tache a bien été ajouté ")
-    else:
-        print("veuillez saisir une tache")
-    return render(request, 'todolist.html')
-    
-
-while True:
-    recuperation_saisi()
-    print(list)
