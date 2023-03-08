@@ -1,9 +1,11 @@
 from django.shortcuts import render
 
-def home(request):
-    return render(request, 'home.html')
+
+
+
 
 def todolist(request):
+    list = []
     if request.method == 'POST':
         tache = request.POST.get('tache')
         if tache:
@@ -12,6 +14,3 @@ def todolist(request):
         else:
             print("Veuillez saisir une tache")
     return render(request, 'todolist.html', {'list': list})
-
-list = []
-

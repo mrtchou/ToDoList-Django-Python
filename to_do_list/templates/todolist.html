@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>To-Do List</h1>
-    <form method="POST">
+    <form method="post" action="{% url 'todolist' %}">
         {% csrf_token %}
         <label for="tache">Ajouter une tache:</label>
         <input type="text" name="tache" id="tache">
