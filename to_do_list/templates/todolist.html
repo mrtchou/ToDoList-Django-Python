@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="tache">Ajouter une tache:</label>
+        <input type="text" name="tache" id="tache">
+        <button type="submit">AJOUTER</button>
+    </form>
+    <ul>
+        {% for tache in taches %}
+        <li>{{ tache }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
