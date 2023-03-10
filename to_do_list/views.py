@@ -1,11 +1,8 @@
 from django.shortcuts import render
 
-
-
-
+list = []
 
 def todolist(request):
-    list = []
     if request.method == 'POST':
         tache = request.POST.get('tache')
         if tache:
