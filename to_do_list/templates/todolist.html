@@ -1,23 +1,34 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <title>To-Do List</title>
 </head>
 <body>
-    <h1>To-Do List</h1>
-    <form method="post" action="{% url 'todolist' %}">
-        {% csrf_token %}
-        <label for="tache">Ajouter une tache:</label>
-        <input type="text" name="tache" id="tache">
-        <label for="tache">Ajouter une date limite:</label>
-        <input type="deadline" name="deadline" id="deadline">
-        <button type="submit">AJOUTER</button>
-    </form>
-    <ul>
-        {% for tache, deadline in list %}
-        <li>{{ tache }}{% if deadline %} (Date limite: {{ deadline }}){% endif %}</li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <div id="newtask">
+            <div id="addTask">
+                <h1>To-Do List</h1>
+                <form method="post" action="{% url 'todolist' %}">
+                    {% csrf_token %}
+                    <label for="tache">Ajouter une tache:</label>
+                    <input type="text" name="tache" id="tache">
+                    <label for="tache">Ajouter une date limite:</label>
+                    <input type="date" name="deadline" id="deadline">
+                    <button type="submit" id="add">AJOUTER</button>
+                </form>
+            </div>
+            <div id="tasks">
+                <ul>
+                    {% for tache, deadline in list %}
+                    <li class="task">{{ tache }}{% if deadline %} : {{ deadline }} {% endif %}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
