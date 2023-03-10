@@ -10,11 +10,13 @@
         {% csrf_token %}
         <label for="tache">Ajouter une tache:</label>
         <input type="text" name="tache" id="tache">
+        <label for="tache">Ajouter une date limite:</label>
+        <input type="deadline" name="deadline" id="deadline">
         <button type="submit">AJOUTER</button>
     </form>
     <ul>
-        {% for tache in list %}
-        <li>{{ tache }}</li>
+        {% for tache, deadline in list %}
+        <li>{{ tache }}{% if deadline %} (Date limite: {{ deadline }}){% endif %}</li>
         {% endfor %}
     </ul>
 </body>
