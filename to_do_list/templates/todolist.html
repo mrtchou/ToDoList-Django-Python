@@ -19,17 +19,17 @@
                     <label for="tache">Ajouter une date limite:</label>
                     <input type="date" name="deadline" id="deadline">
                     <select name="priority" id="priority">
-                        <option value="1">Normal</option>
-                        <option value="2">Important</option>
-                        <option value="3">Prioritaire</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Important">Important</option>
+                        <option value="Prioritaire">Prioritaire</option>
                     </select>
                     <button type="submit" id="add">AJOUTER</button>
                 </form>
             </div>
             <div id="tasks">
                 <ul>
-                    {% for tache, deadline in list %}
-                    <li class="task">{{ tache }}{% if deadline %} : {{ deadline }} {% endif %}</li>
+                    {% for tache, deadline, priority in list %}
+                    <li class="task">{{ tache }}{% if deadline %} <br/>Date limite: {{ deadline }} <br/>priorité:  {{ priority }}{% endif %}</li>
                     {% endfor %}
                 </ul>
             </div>
