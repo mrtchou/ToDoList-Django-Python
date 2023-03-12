@@ -39,7 +39,6 @@
                     {% for task, deadline, priority in list %}
                     <li class="task">
                         <div class="task-details">
-                            <input name="task_index" value="{{ forloop.counter0 }}">
                             <div class="task-name">{{ task }}</div>
                             {% if deadline %}
                             <div class="task-deadline"><strong>Deadline:</strong> {{ deadline }}</div>
@@ -47,10 +46,11 @@
                             <div class="task-priority"><strong>Pririté:</strong> {{ priority }}</div>
                         </div>
                         <div class="task-action">
-                            <form method="post" action="{% url 'delete_last_item_to_do_list' %}">
+                            <form method="post" action="{% url 'delete_item_to_do_list' %}">
                                 {% csrf_token %}
-                                
+                                <input type="hidden" name="task_index" value="{{ forloop.counter0 }}">
                                 <button class="delete" type="submit" id="delete">Supprimer</button>
+                                <button class="update" type="submit" id="update">Modifier</button>
                             </form>
                         </div>
                     </li>

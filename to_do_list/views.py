@@ -16,9 +16,15 @@ def todolist(request):
 
 
 
-def delete_last_item_to_do_list(request):
+def delete_item_to_do_list(request):
     if request.method == 'POST':
         task_index = int(request.POST.get('task_index'))
-        
-        list.pop(task_index)
+        print(task_index)
+        if task_index == 'update':
+            list.insert(task_index)
+            print(task_index)
+        else:
+            list.pop(task_index)
+            print(task_index)
     return redirect('todolist')
+

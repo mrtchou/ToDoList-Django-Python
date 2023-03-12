@@ -7,5 +7,5 @@ from . import views
 
 urlpatterns = [
     path('', views.todolist, name='todolist'),
-    path('delete', views.delete_last_item_to_do_list, name='delete_last_item_to_do_list'),
+    path('delete', views.delete_item_to_do_list, name='delete_item_to_do_list'),
 ]
