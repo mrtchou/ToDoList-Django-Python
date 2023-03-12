@@ -1,9 +1,9 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <title>To-Do List</title>
 </head>
@@ -14,22 +14,46 @@
                 <h1>To-Do List</h1>
                 <form method="post" action="{% url 'todolist' %}">
                     {% csrf_token %}
-                    <label for="tache">Ajouter une tache:</label>
-                    <input type="text" name="tache" id="tache">
-                    <label for="tache">Ajouter une date limite:</label>
-                    <input type="date" name="deadline" id="deadline">
-                    <select name="priority" id="priority">
-                        <option value="Normal">Normal</option>
-                        <option value="Important">Important</option>
-                        <option value="Prioritaire">Prioritaire</option>
-                    </select>
-                    <button type="submit" id="add">AJOUTER</button>
+                    <div class="form-item">
+                        <label for="task">Ajouter une tache à faire:</label>
+                        <input type="text" name="task" id="task">
+                    </div>
+                    <div class="form-item">
+                        <label for="deadline">Ajouter deadline:</label>
+                        <input type="date" name="deadline" id="deadline">
+                    </div>
+                    <div class="form-item">
+                        <label for="priority">Priorité:</label>
+                        <select name="priority" id="priority">
+                            <option value="Normal">Normal</option>
+                            <option value="Important">Important</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="add">Ajouter</button>
                 </form>
             </div>
             <div id="tasks">
+                <h2>Taches à faire</h2>
                 <ul>
-                    {% for tache, deadline, priority in list %}
-                    <li class="task">{{ tache }}{% if deadline %} <br/>Date limite: {{ deadline }} <br/>priorité:  {{ priority }}{% endif %}</li>
+                    {% for task, deadline, priority in list %}
+                    <li class="task">
+                        <div class="task-details">
+                            <input name="task_index" value="{{ forloop.counter0 }}">
+                            <div class="task-name">{{ task }}</div>
+                            {% if deadline %}
+                            <div class="task-deadline"><strong>Deadline:</strong> {{ deadline }}</div>
+                            {% endif %}
+                            <div class="task-priority"><strong>Pririté:</strong> {{ priority }}</div>
+                        </div>
+                        <div class="task-action">
+                            <form method="post" action="{% url 'delete_last_item_to_do_list' %}">
+                                {% csrf_token %}
+                                
+                                <button class="delete" type="submit" id="delete">Supprimer</button>
+                            </form>
+                        </div>
+                    </li>
                     {% endfor %}
                 </ul>
             </div>

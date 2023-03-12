@@ -1,156 +1,144 @@
+/* Reset styles */
 *,
 *:before,
-*:after{
-    padding: 7px;
-    padding-right: 25px;
+*:after {
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-body{
-    height: 100vh;
-    background: #7f878e;
-}
-.container{
-    width: 60vw;
-    top: 50%;
-    left: 50%;
-    background: white;
-    border-radius: 10px;
-    min-width: 45%;
-    position: absolute;
-    min-height: 20%;
-    transform: translate(-50%,-50%);
-    display: flex;
-    flex-direction: column;
+
+/* Basic styles for the body */
+body {
+    background-color: #fafafa;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
 }
 
-h1{
+/* Main container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus {
+    outline: none;
+    background-color: #fff;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+/* Task list */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li span {
+    font-size: 16px;
+}
+
+li button {
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #f44336;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+li button:hover {
+    background-color: #c62828;
+}
+
+/* Specific styles for this project */
+#newtask {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+#addTask h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #1DA1F2;
+    margin-bottom: 20px;
     text-align: center;
 }
 
-.container{
-    background-color: red;
-    height: 100vh;
-}
-#newtask{
-    display:flex;
-    flex-direction: row;
-   
-}
-#newtask input{
-    display: flex;
-    flex-direction: column;
-  
-width: 11vw;
-height: 9vh;
-padding: 12px;
-color: #111111;
-font-weight: 500;
-position: relative;
-border-radius: 5px;
-font-family: 'Poppins',sans-serif;
-font-size: 15px;
-border: 2px solid #d1d3d4;
-margin-top: 7px;
-margin-bottom: 13px;
+#tasks h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1DA1F2;
+    margin-bottom: 20px;
 }
 
-#newtask input:focus{
-    outline: none;
-    border-color: #0d75ec;
-}
-#newtask button{
-    position: relative;
-    margin-top: 5vh;
-    font-weight: 500;
-    font-size: 16px;
-    background-color: #0d75ec;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-    outline: none;
-    width: 11vw;
-    border-radius: 5px;
-    font-family: 'Poppins',sans-serif;
-}
-#addTask{
-    border-radius: 10px;
-    width: 100%;
-    position: relative;
-    background-color: #ffffff;
-    padding: 10px;
-    margin-top: 10vh;
-    height: fit-content;
-    margin: 10px;
-}
-
-
-#tasks{
-    border-radius: 10px;
-    width: 100%;
-    position: relative;
-    background-color: #ffffff;
-    padding: 10px;
-    margin-top: 10vh;
-    margin: 10px;
-    height: fit-content;
-    display:block;  
-    flex-direction: column;
-}
-
-.deadline{
-    border: 2px solid rosybrown;
-}
-
-.task{
-    border: 2px solid darkgreen;
-}
-
-
-ul{
-    
-    padding-right: 33px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between  ;
-    list-style: none;
-}
-
-ul li{
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-}
-
-ul li:hover {
-    background: #ddd;
-}
-
-
-
-.task{
-    border-radius: 5px;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #939697;
-    cursor: pointer;
-    background-color: #c5e1e6;
-    margin-bottom: 8px;
-    padding: 5px 10px;
-    display: flex;
-}
-.task span{
-    font-family: 'Poppins',sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-}
-.task button{
-    background-color: #6583e5;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    height: 100%;
-    width: 45vw;
-    border-radius: 5px;
+.task {
+    border: 2px solid #1DA1F2;
 }
