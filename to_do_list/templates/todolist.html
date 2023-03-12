@@ -49,8 +49,15 @@
                             <form method="post" action="{% url 'delete_item_to_do_list' %}">
                                 {% csrf_token %}
                                 <input type="hidden" name="task_index" value="{{ forloop.counter0 }}">
-                                <button class="delete" type="submit" id="delete">Supprimer</button>
-                                <button class="update" type="submit" id="update">Modifier</button>
+                                <button class="delete" type="submit" name="action" value="delete">Supprimer</button>
+                            </form>
+                            <form method="post" action="{% url 'update_item_to_do_list' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="task_index" value="{{ forloop.counter0 }}">
+                                <input name="task" value="{{ task }}">
+                                <input type="date" name="deadline" value="{{ deadline }}">
+                                <input name="priority" value="{{ priority }}">
+                                <button class="update" type="submit" name="action" value="update">Modifier</button>
                             </form>
                         </div>
                     </li>
