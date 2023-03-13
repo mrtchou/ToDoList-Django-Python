@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 
+
 list = []
 
 def todolist(request):
@@ -37,3 +38,7 @@ def update_item_to_do_list(request):
         else:
             print("Veuillez saisir une tache")
     return redirect('todolist')
+
+
+
+
