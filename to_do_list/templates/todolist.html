@@ -13,14 +13,14 @@
     <div class="container">
         <div id="newtask">
             <div id="addTask">
-                <h1>To-Do List</h1>
+                <h1 class="title_page_to_do_list">To Do List by mrTchou from BEPAG</h1>
                 <form method="post" action="{% url 'todolist' %}">
                     {% csrf_token %}
                     <div class="form-item">
                         <label for="task">Ajouter une tache à faire:</label>
-                        <input type="text" name="task" id="task">
+                        <input type="text" name="task" id="task" placeholder="{{ error_message }}">
                         {% if error_message %}
-                        <div class="alert alert-danger">{{ error_message }}</div>
+                        <div  id="error-message" class="alert alert-danger">{{ error_message }}</div>
                         {% endif %}
                         <label for="deadline">Ajouter deadline:</label>
                         <input type="date" name="deadline" >
@@ -40,32 +40,29 @@
                     {% for task, deadline, priority in list %}
                     <li class="task">
                         <div class="task-details">
-                            <div id="mybox">
-                                <input type="checkbox" id="myCheckbox" onclick="changeColor()">helloooooo
-                            </div>
-                            <div class="task-name">{{ task }}</div>
                             {% if deadline %}
                             <div class="task-deadline"><strong id="deadline">Deadline:</strong> {{ deadline }}</div>
                             {% endif %}
-                            <div class="task-priority"><strong id="priority">Pririté:</strong> {{ priority }}</div>
-                        </div>
+                            </div>
+                            <div class="task-name">
+                                <input name="task" value="{{ task }}">
+                            </div>
                         <div class="task-action">
-                            <form method="post" action="{% url 'delete_item_to_do_list' %}">
-                                {% csrf_token %}
-                                <input type="hidden" name="task_index" value="{{ forloop.counter0 }}">
-                                <button class="delete" type="submit" name="action" value="delete">Supprimer</button>
-                            </form>
                             <form method="post" action="{% url 'update_item_to_do_list' %}">
                                 {% csrf_token %}
                                 <input type="hidden" name="task_index" value="{{ forloop.counter0 }}">
-                                <input name="task" value="{{ task }}">
                                 <input type="date" name="deadline" value="{{ deadline }}" id="deadline-{{ forloop.counter0 }}">
-                                <select name="priority" value="{{ priority }}" id="priority-{{ forloop.counter0 }}" >
+                                <select name="priority" value="{{ priority }}" >
                                     <option value="Normal">Normal</option>
                                     <option value="Important">Important</option>
                                     <option value="Urgent">Urgent</option>
                                 </select>                   
                                 <button class="update" type="submit" name="action" value="update">Modifier</button>
+                            </form>
+                            <form method="post" action="{% url 'delete_item_to_do_list' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="task_index" value="{{ forloop.counter0 }}">
+                                <button class="delete" type="submit" name="action" value="delete">Supprimer</button>
                             </form>
                         </div>
                     </li>
@@ -86,6 +83,16 @@
                 mybox.classList.remove("checked")
 			}
 		}
+
+
+  setTimeout(function() {
+    var errorMessage = document.getElementById("error-message");
+    if (errorMessage) {
+      errorMessage.classList.add("hide");
+    }
+  }, 5000);
+
+
 
         
 	</script>
