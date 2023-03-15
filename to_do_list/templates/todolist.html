@@ -22,20 +22,16 @@
                         {% if error_message %}
                         <div class="alert alert-danger">{{ error_message }}</div>
                         {% endif %}
-                    </div>
-                    <div class="form-item">
                         <label for="deadline">Ajouter deadline:</label>
                         <input type="date" name="deadline" >
-                    </div>
-                    <div class="form-item">
                         <label for="priority">Priorité:</label>
                         <select name="priority" >
                             <option value="Normal">Normal</option>
                             <option value="Important">Important</option>
                             <option value="Urgent">Urgent</option>
                         </select>
+                        <button type="submit" id="add">Ajouter</button>
                     </div>
-                    <button type="submit" id="add">Ajouter</button>
                 </form>
             </div>
             <div id="tasks">
