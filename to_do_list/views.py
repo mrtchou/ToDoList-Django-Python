@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 
 
+
 list = []
 
 def todolist(request):
+  
     if request.method == 'POST':
         task = request.POST.get('task')
         deadline = request.POST.get('deadline')
@@ -12,9 +14,9 @@ def todolist(request):
             list.append((task, deadline, priority))
             print("La tache a bien été ajoutée")
         else:
-            list.append(print("Veuillez saisir une tache"))
+            error_message = "Veuillez saisir une tache"
+            return render(request, 'todolist.html', {'list': list, 'error_message': error_message})
     return render(request, 'todolist.html', {'list': list})
-
 
 
 def delete_item_to_do_list(request):
