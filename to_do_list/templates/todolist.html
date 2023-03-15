@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <title>To-Do List</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+   
 </head>
 <body>
     <div class="container">
@@ -41,6 +41,9 @@
                     {% for task, deadline, priority in list %}
                     <li class="task">
                         <div class="task-details">
+                            <div id="mybox">
+                                <input type="checkbox" id="myCheckbox" onclick="changeColor()">helloooooo
+                            </div>
                             <div class="task-name">{{ task }}</div>
                             {% if deadline %}
                             <div class="task-deadline"><strong id="deadline">Deadline:</strong> {{ deadline }}</div>
@@ -62,8 +65,7 @@
                                     <option value="Normal">Normal</option>
                                     <option value="Important">Important</option>
                                     <option value="Urgent">Urgent</option>
-                                </select>
-                                
+                                </select>                   
                                 <button class="update" type="submit" name="action" value="update">Modifier</button>
                             </form>
                         </div>
@@ -73,45 +75,18 @@
             </div>
         </div>
     </div>
-
     <script>
-        $(function() {
-            // Ajoute un listener à tous les champs de date
-            $("input[type=date]").change(function() {
-                var task_index = $(this).closest("li").index();
-                var deadline = $(this).val();
-                update_task(task_index, "deadline", deadline);
-            });
-        
-            // Ajoute un listener à tous les menus déroulants de priorité
-            $("select[name=priority]").change(function() {
-                var task_index = $(this).closest("li").index();
-                var priority = $(this).val();
-                update_task(task_index, "priority", priority);
-            });
-        
-            // Envoie une requête AJAX pour mettre à jour la tâche dans la base de données
-            function update_task(task_index, field, value) {
-                $.ajax({
-                    type: "POST",
-                    url: "{% url 'update_item_to_do_list' %}",
-                    data: {
-                        task_index: task_index,
-                        [field]: value,
-                        csrfmiddlewaretoken: "{{ csrf_token }}"
-                    },
-                    success: function() {
-                        console.log("La tâche a bien été mise à jour.");
-                    },
-                    error: function() {
-                        console.log("Erreur lors de la mise à jour de la tâche.");
-                    }
-                });
-            }
-        });
-        </script>
-        
-    
-
+		function changeColor() {
+			var checkbox = document.getElementById("myCheckbox");
+            var mybox = document.getElementById("mybox");
+			if (checkbox.checked) {
+				checkbox.classList.add("checked");
+                mybox.classList.add("checked")
+			} else {
+				checkbox.classList.remove("checked");
+                mybox.classList.remove("checked")
+			}
+		}
+	</script>
 </body>
 </html>

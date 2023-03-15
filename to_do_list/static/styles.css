@@ -143,4 +143,6 @@ li button:hover {
     border: 2px solid #1DA1F2;
 }
 
-
+.checked {
+    background-color: green;
+}
