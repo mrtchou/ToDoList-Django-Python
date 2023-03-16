@@ -26,6 +26,7 @@ def todolist(request):
     return render(request, 'todolist.html', {'list': list})
 
 
+
 def delete_item_to_do_list(request):
     if request.method == 'POST':
         task_index = int(request.POST.get('task_index'))
