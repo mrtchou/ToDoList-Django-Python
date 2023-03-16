@@ -6,22 +6,17 @@ Mes tâches |
 
 
 
-
-    <!-- Formulaire d'ajout d'une tâche -->
-    <form method="post">
-        {% csrf_token %}
-            {{task_form.title}}
-            <button type="submit">Ajouter</button>
-        </form>
-    
-        <!-- Liste des tâches-->
-        <ol>
-            {% for task in tasks %}
-                <li>{{task.title}}</li>
-            {% endfor %}
-        </ol>
-
-
+<h1>Hello, this is my ToDoList App using Django!</h1>
+<form method="post">
+{% csrf_token %}
+    {{task_form.title}}
+    <button type="submit">Ajouter</button>
+</form>
+<ol>
+    {% for task in tasks %}
+        <li>{{task.title}} | <a href="{% url 'update' task.id %}">Modifier</a></li>
+    {% endfor %}
+</ol>
 
 
 
