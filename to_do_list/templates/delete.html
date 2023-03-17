@@ -5,13 +5,25 @@ Supprimer une tâche | {{ block.super }}
 {% endblock title %}
 
 {% block content %}
+
   <div class="container">
-    <h1 class="title">Supprimer une tâche</h1>
-    <p>Confirmez la suppression de la tâche : <strong>{{ task }}</strong> ?</p>
-    <a class="btn-cancel" href="{% url 'index' %}">Annuler</a>
-    <form method="post">
-      {% csrf_token %}
-      <input class="btn-confirm" type="submit" value="Confirmer">
-    </form>
-  </div>
+	<h1 class="title">Supprimer une tâche</h1>
+	<ol class="task-list">
+		<li class="task">
+			<div class="task-info">
+				<span class="task-title">
+					<p>Confirmez la suppression de la tâche : 
+						<strong>
+							{{ task }}
+						</strong> ?
+					</p>
+					<button class="btn-confirm" type="submit" value="Confirmer">Confirmer la suppression</button>
+						<button class="edit-button" type="submit">
+							<a class="btn-cancel" href="{% url 'index' %}">Annuler</a>
+						</button>
+				</span>
+			</div>
+		</li>
+	</ol>
+</div>
 {% endblock content %}
