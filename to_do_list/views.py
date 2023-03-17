@@ -59,6 +59,13 @@ def delete_item_to_do_list(request):
         list.pop(task_index)
     return redirect('todolist')
 
+def delete(request, pk):
+	task = Task.objects.get(id=pk)
+	if request.method == "POST":
+		task.delete()
+		return redirect("index")
+	return render(request,"delete.html",{"task":task})
+
 
 
 
