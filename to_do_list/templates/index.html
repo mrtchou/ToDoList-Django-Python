@@ -1,36 +1,36 @@
 {% extends 'base.html' %}
+
 {% block title %}
-Mes tâches | 
+    ToDoList App
 {% endblock title %}
+
 {% block content %}
-
-
-
-<h1>Hello, this is my ToDoList App using Django!</h1>
-
-<form method="post">
-{% csrf_token %}
-    {{task_form.title}}
-    <button type="submit">Ajouter</button>
-</form>
-<ol>
-    {% for task in tasks %}
-        <li>id: {{task.id}} 
-            
-            nom tache:
-            {% if task.completed == True %}
-            <strike> 
-                {{task.title}} 
-            </strike>
-            {% else %}
-            {{task.title}}
-        {% endif %} | <a href="{% url 'update' task.id %}">Modifier</a></li>
-    {% endfor %}
-</ol>
-
-
-
-
-
-
+    <div class="container">
+        <h1 class="title">ToDoList by BEPAG</h1>
+        <form class="form" method="post">
+            {% csrf_token %}
+            {{ task_form.title }}
+            <button class="add-button" type="submit">Ajouter</button>
+        </form>
+        <ol class="task-list">
+            {% for task in tasks %}
+                <li class="task">
+                    <div class="task-info">
+                        <span class="task-id">id: {{ task.id }}</span>
+                        <span class="task-title">
+                            {% if task.completed %}
+                                <strike>{{ task.title }}</strike>
+                            {% else %}
+                                {{ task.title }}
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="task-actions">
+                        <a class="task-action" href="{% url 'update' task.id %}">Modifier</a>
+                        <a class="task-action" href="{% url 'delete' task.id %}">Supprimer</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
 {% endblock content %}

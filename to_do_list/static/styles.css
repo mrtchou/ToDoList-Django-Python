@@ -1,159 +1,162 @@
-/* Réinitialisation des styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/* Styles pour le corps de la page */
+/* Style pour la page ToDoList */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
+    background-color: #fafafa;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
 }
 
-.title_page_to_do_list{
-    margin-bottom: 23px;
+/* Style pour le conteneur principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Style pour le titre */
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+    text-align: center;
+}
 
-.alert {
-    transition: opacity 1s ease-in-out;
-    opacity: 1;
-  }
-  
-  .alert.hide {
-    opacity: 0;
-  }
-  
+/* Style pour le formulaire d'ajout de tâche */
+.form {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+/* Style pour le champ de texte de la tâche */
+.task-input {
+    flex-grow: 1;
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: #333;
+    background-color: #fff;
+    border: none;
+    border-bottom: 2px solid #1da1f2;
+    outline: none;
+}
+
+/* Style pour le bouton d'ajout de tâche */
+.add-button {
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #1da1f2;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+/* Style pour la liste des tâches */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style pour chaque tâche */
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+}
+
+/* Style pour la checkbox */
+.task-checkbox {
+    margin-right: 1rem;
+    cursor: pointer;
+    }
+    
+/* Style pour le texte de la tâche */
+.task-title {
+    flex-grow: 1;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    color: #333;
+    text-decoration: none;
+    }
+
+/* Style pour le lien de modification et de suppression */
+.task-action {
+    font-size: 1.2rem;
+    color: #1da1f2;
+    text-decoration: none;
+    margin-left: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Style pour le lien de modification et de suppression au survol */
+.task-action:hover {
+    color: #333;
+}
+
+/* Style pour le message "Aucune tâche pour le moment" */
+.no-task-message {
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Style pour les liens */
+a {
+    color: #1da1f2;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Style pour les liens au survol */
+a:hover {
+    color: #333;
+}
 
 
 .container {
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
-}
-
-/* Styles pour le formulaire */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-item {
-    margin-bottom: 20px;
-}
-
-label {
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="date"],
-select {
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    width: 100%;
-    margin-top: 4px;
-}
-
-button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button[type="submit"]:hover {
-    background-color: #3e8e41;
-}
-
-/* Styles pour la liste des tâches */
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.task {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-}
-
-.task-details {
-    display: flex;
-    align-items: center;
-}
-
-.task-name {
-    margin-left: 10px;
-    font-weight: bold;
-}
-
-.task-deadline,
-.task-priority {
-    margin-left: 20px;
-}
-
-.task-action {
-    display: flex;
-    flex-direction: column;
-}
-
-.delete {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px;
-    cursor: pointer;
-    margin-bottom: 5px;
-}
-
-.delete:hover {
-    background-color: #da190b;
-}
-
-.update {
-    background-color: #008CBA;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.update:hover {
-    background-color: #006b8f;
-}
-
-/* Styles pour la case à cocher */
-#mybox {
-    margin-right: 10px;
-}
-
-#mybox input[type="checkbox"] {
-    display: none;
-}
-
-#mybox.checked::before {
-    content: "\2713";
-    display: inline-block;
-    color: #fff;
-    font-size: 20px;
-    width: 20px;
-    height: 20px;
-    background-color: #4CAF50;
-    border-radius: 4px;
     text-align: center;
-    margin-right: 10px;
-}
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+  
+  .btn-cancel,
+  .btn-confirm {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .btn-cancel {
+    color: #fff;
+    background-color: #ff4444;
+    margin-right: 1rem;
+  }
+  
+  .btn-confirm {
+    color: #fff;
+    background-color: #2ecc71;
+  }
+  
