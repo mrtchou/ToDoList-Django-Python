@@ -28,19 +28,6 @@ Mes tâches |
     {% endfor %}
 </ol>
 
-<ol>
-    {% for task in tasks %}
-        <li>
-            {% if task.completed == True %}
-                <strike> {{task.title}} </strike>
-            {% else %}
-                {{task.title}}
-            {% endif %}
-            | <a href="{% url 'update' task.id %}">Modifier</a>
-        </il>
-    {% endfor %}
-</ol>
-
 
 
 
