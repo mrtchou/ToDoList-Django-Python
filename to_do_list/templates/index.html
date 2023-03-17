@@ -7,6 +7,7 @@ Mes tâches |
 
 
 <h1>Hello, this is my ToDoList App using Django!</h1>
+
 <form method="post">
 {% csrf_token %}
     {{task_form.title}}
@@ -14,7 +15,29 @@ Mes tâches |
 </form>
 <ol>
     {% for task in tasks %}
-        <li>{{task.title}} | <a href="{% url 'update' task.id %}">Modifier</a></li>
+        <li>id: {{task.id}} 
+            
+            nom tache:
+            {% if task.completed == True %}
+            <strike> 
+                {{task.title}} 
+            </strike>
+            {% else %}
+            {{task.title}}
+        {% endif %} | <a href="{% url 'update' task.id %}">Modifier</a></li>
+    {% endfor %}
+</ol>
+
+<ol>
+    {% for task in tasks %}
+        <li>
+            {% if task.completed == True %}
+                <strike> {{task.title}} </strike>
+            {% else %}
+                {{task.title}}
+            {% endif %}
+            | <a href="{% url 'update' task.id %}">Modifier</a>
+        </il>
     {% endfor %}
 </ol>
 
