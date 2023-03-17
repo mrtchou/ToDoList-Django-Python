@@ -16,7 +16,6 @@
             {% for task in tasks %}
                 <li class="task">
                     <div class="task-info">
-                        <span class="task-id">id: {{ task.id }}</span>
                         <span class="task-title">
                             {% if task.completed %}
                                 <strike>{{ task.title }}</strike>

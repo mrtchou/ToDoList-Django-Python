@@ -6,10 +6,22 @@
 {% block content %}
     <div class="container">
         <h1 class="title">Modifier une tâche</h1>
-        <form class="form" method="post">
-            {% csrf_token %}
-            {{ edit_task_form.as_p }}
-            <button class="edit-button" type="submit">Modifier</button>
-        </form>
+        <ol class="task-list">
+			<li class="task">
+				<div class="task-info">
+					<span class="task-title">
+						<form class="form" method="post">
+							{% csrf_token %}
+							{{ edit_task_form.as_p }}
+							<button class="edit-button" type="submit">Modifier</button>
+							<button class="edit-button" type="submit">
+								<a class="btn-cancel" href="{% url 'index' %}">Annuler</a>
+							</button>
+						</form>
+					</span>
+				</div>
+			</li>
+		</ol>
     </div>
+	
 {% endblock content %}
