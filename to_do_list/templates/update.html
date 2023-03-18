@@ -1,27 +1,31 @@
 {% extends 'base.html' %}
-
 {% block title %}
-    Modifier une tâche | {% endblock title %}
-
+Modifier une tâche | 
+{% endblock title %}
 {% block content %}
-    <div class="container">
-        <h1 class="title">Modifier une tâche</h1>
-        <ol class="task-list">
-			<li class="task">
-				<div class="task-info">
-					<span class="task-title">
-						<form class="form" method="post">
-							{% csrf_token %}
-							{{ edit_task_form }}
-							<button class="edit-button" type="submit">Modifier</button>
-							<button class="edit-button" type="submit">
-								<a class="btn-cancel" href="{% url 'index' %}">Annuler</a>
-							</button>
-						</form>
-					</span>
-				</div>
-			</li>
-		</ol>
+
+
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h1 class="text-center">Modifier la tache de ToDoList</h1>
     </div>
-	
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <div class="input-group-text" title="Tâche fini">
+                    {{edit_task_form.completed}}
+                </div>
+                {{edit_task_form.title}}
+                <button type="submit" class="btn btn-lg btn-info">Confirmer la modification</button>
+				<button type="submit" class="btn btn-light" >
+					<a class="btn-cancel" href="{% url 'index' %}">Annuler</a>
+				</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock content %}
