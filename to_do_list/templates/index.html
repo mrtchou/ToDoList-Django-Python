@@ -5,16 +5,16 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="container">
+    <div class="card">
         <h1 class="title">ToDoList by BEPAG</h1>
         <form class="form" method="post">
             {% csrf_token %}
             {{ task_form.title }}
-            <button class="add-button" type="submit">Ajouter</button>
+            <button class="btn btn-primary" type="submit">Ajouter</button>
         </form>
-        <ol class="task-list">
+        <ol class="list-group">
             {% for task in tasks %}
-                <li class="task">
+                <li class="list-group-item list-group-item-action">
                     <div class="task-info">
                         <span class="task-title">
                             {% if task.completed %}
@@ -33,3 +33,6 @@
         </ol>
     </div>
 {% endblock content %}
+
+
+
