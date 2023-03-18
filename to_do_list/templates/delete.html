@@ -6,7 +6,8 @@ Supprimer une tâche | {{ block.super }}
 
 {% block content %}
 
-  <div class="container">
+<form method="POST" class="container">
+	{% csrf_token %}
 	<h1 class="title">Supprimer une tâche</h1>
 	<ol class="task-list">
 		<li class="task">
@@ -18,6 +19,7 @@ Supprimer une tâche | {{ block.super }}
 						</strong> ?
 					</p>
 					<button class="btn-confirm" type="submit" value="Confirmer">Confirmer la suppression</button>
+					<input type="submit" value="Confirmer">
 						<button class="edit-button" type="submit">
 							<a class="btn-cancel" href="{% url 'index' %}">Annuler</a>
 						</button>
