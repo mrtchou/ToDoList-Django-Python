@@ -12,7 +12,7 @@
 					<span class="task-title">
 						<form class="form" method="post">
 							{% csrf_token %}
-							{{ edit_task_form.as_p }}
+							{{ edit_task_form }}
 							<button class="edit-button" type="submit">Modifier</button>
 							<button class="edit-button" type="submit">
 								<a class="btn-cancel" href="{% url 'index' %}">Annuler</a>

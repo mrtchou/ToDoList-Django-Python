@@ -18,7 +18,7 @@
                     <div class="task-info">
                         <span class="task-title">
                             {% if task.completed %}
-                                <strike>{{ task.title }}</strike>
+                                <del>{{ task.title }}</del>
                             {% else %}
                                 {{ task.title }}
                             {% endif %}
